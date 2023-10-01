@@ -8,9 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  onLogin: any;
+}
 
-export function UserForm({ className, ...props }: UserAuthFormProps) {
+export function UserForm({ className, onLogin, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
@@ -19,6 +21,7 @@ export function UserForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false);
+      return onLogin();
     }, 3000);
   }
 
@@ -35,7 +38,6 @@ export function UserForm({ className, ...props }: UserAuthFormProps) {
               placeholder="@example.com OR CPF/CNPJ"
               type="text"
               autoCapitalize="none"
-              // autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
             />

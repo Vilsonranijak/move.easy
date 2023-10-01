@@ -1,6 +1,10 @@
 import { UserForm } from "./UserForm";
 
-export default function Login() {
+interface ILogin {
+  onLogin: any;
+}
+
+export default function Login({ onLogin }: ILogin) {
   return (
     <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
@@ -36,7 +40,7 @@ export default function Login() {
             <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
             <p className="text-sm text-muted-foreground">Coloque seu email</p>
           </div>
-          <UserForm />
+          <UserForm onLogin={onLogin} />
         </div>
       </div>
     </div>
