@@ -1,3 +1,9 @@
+import Login from "./pages/Login";
+
 export default function App() {
-  return <h1>Oi</h1>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
